@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using MyGPS.Messages;
+using MyGPSLogic.Messages;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -35,20 +35,20 @@ namespace MyGPS
                 var message = new StartLongRunningTaskMessage();
                 MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
             }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException ex)
             {
                 // Handle not supported on device exception
-                LblPosicion.Text = fnsEx.Message;
+                LblPosicion.Text = ex.Message;
             }
-            catch (FeatureNotEnabledException fneEx)
+            catch (FeatureNotEnabledException ex)
             {
                 // Handle not enabled on device exception
-                LblPosicion.Text = fneEx.Message;
+                LblPosicion.Text = ex.Message;
             }
-            catch (PermissionException pEx)
+            catch (PermissionException ex)
             {
                 // Handle permission exception
-                LblPosicion.Text = pEx.Message;
+                LblPosicion.Text = ex.Message;
             }
             catch (Exception ex)
             {

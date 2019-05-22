@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGPS.Android", "MyGPS\MyGPS.Android\MyGPS.Android.csproj", "{5BF5D09F-F6EF-40D7-BCB4-AB2028722271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGPS", "MyGPS\MyGPS\MyGPS.csproj", "{EA8DEDB8-76C6-470F-924A-6322E0777EEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGPS", "MyGPS\MyGPS\MyGPS.csproj", "{EA8DEDB8-76C6-470F-924A-6322E0777EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGPSLogic", "MyGPSLogic\MyGPSLogic.csproj", "{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Logica Comun", "00. Logica Comun", "{BDC1BA3D-7CCC-4FCD-86C2-4CD79B7B769B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Xamarin Forms", "01. Xamarin Forms", "{01DC5BC5-6D79-41FA-973E-2BF92C2CC055}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. App Android", "02. App Android", "{FB49E678-F365-42F4-B70C-09FA35374712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +33,18 @@ Global
 		{EA8DEDB8-76C6-470F-924A-6322E0777EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA8DEDB8-76C6-470F-924A-6322E0777EEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA8DEDB8-76C6-470F-924A-6322E0777EEB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BF5D09F-F6EF-40D7-BCB4-AB2028722271} = {FB49E678-F365-42F4-B70C-09FA35374712}
+		{EA8DEDB8-76C6-470F-924A-6322E0777EEB} = {01DC5BC5-6D79-41FA-973E-2BF92C2CC055}
+		{8D19C9DA-2DDC-4A30-AE39-75AA5BDC4B2C} = {BDC1BA3D-7CCC-4FCD-86C2-4CD79B7B769B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9004E2D9-74D6-46B0-B9F5-95A7C005BFD9}

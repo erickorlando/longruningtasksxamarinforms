@@ -99,6 +99,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MyGPSLogic\MyGPSLogic.csproj">
+      <Project>{8d19c9da-2ddc-4a30-ae39-75aa5bdc4b2c}</Project>
+      <Name>MyGPSLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyGPS\MyGPS.csproj">
       <Project>{4C82C6F5-12BF-42FF-84BA-880C876CCE48}</Project>
       <Name>MyGPS</Name>

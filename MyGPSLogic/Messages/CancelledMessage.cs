@@ -1,4 +1,4 @@
-﻿namespace MyGPS.Messages
+﻿namespace MyGPSLogic.Messages
 {
     public class CancelledMessage
     {

@@ -14,4 +14,8 @@
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyGPSLogic\MyGPSLogic.csproj" />
+  </ItemGroup>
 </Project>

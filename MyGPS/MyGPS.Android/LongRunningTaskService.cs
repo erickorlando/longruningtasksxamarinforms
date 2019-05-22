@@ -1,10 +1,10 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using MyGPS.Messages;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using MyGPSLogic.Messages;
 using Xamarin.Forms;
 
 namespace MyGPS.Droid
@@ -27,7 +27,6 @@ namespace MyGPS.Droid
             {
                 try
                 {
-                    //INVOKE THE SHARED CODE
                     var counter = new TaskCounter();
                     counter.RunCounter(_cts.Token).Wait();
                 }

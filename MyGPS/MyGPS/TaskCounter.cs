@@ -1,7 +1,8 @@
 ﻿using System;
-using MyGPS.Messages;
 using System.Threading;
 using System.Threading.Tasks;
+using MyGPSLogic.Messages;
+using MyGPSLogic.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -9,6 +10,20 @@ namespace MyGPS
 {
     public class TaskCounter
     {
+        private Timer _timer;
+        private IDriver _driver;
+
+        public TaskCounter(IDriver driver)
+        {
+            _driver = driver;
+            _timer = new Timer(x => ElapsedTime(), driver, 0, driver.GetLatency().NumberOfSeconds);
+        }
+
+        private void ElapsedTime()
+        {
+                
+        }
+
         public async Task RunCounter(CancellationToken token)
         {
             await Task.Run(async () =>
