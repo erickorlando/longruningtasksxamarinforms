@@ -1,13 +1,14 @@
-﻿using MyGPSLogic.DataTransferObjects;
+﻿using System.Threading;
+using MyGPSLogic.DataTransferObjects;
 
 namespace MyGPSLogic.Services
 {
     public interface IMyGps
     {
-        void StartUp();
+        GpsServiceResponse StartUp(CancellationToken cancellationToken);
 
-        void ShutDown();
+        GpsServiceResponse ShutDown();
 
-        LocationResponse GetGpsPositions(LatencyResponse request);
+        LocationResponse GetGpsPositions();
     }
 }

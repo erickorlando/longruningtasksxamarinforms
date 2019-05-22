@@ -1,15 +1,16 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using MyGPSLogic.Messages;
+using MyGPSLogic.Services;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using MyGPSLogic.Messages;
 using Xamarin.Forms;
 
 namespace MyGPS.Droid
 {
-	[Service]
+    [Service]
     public class LongRunningTaskService : Service
     {
         private CancellationTokenSource _cts;
@@ -27,8 +28,8 @@ namespace MyGPS.Droid
             {
                 try
                 {
-                    var counter = new TaskCounter();
-                    counter.RunCounter(_cts.Token).Wait();
+                    var myGpsService = new ServiceMyGps(new FakeServiceDriver());
+                    myGpsService.StartUp(_cts.Token);
                 }
                 catch (Android.OS.OperationCanceledException ex)
                 {

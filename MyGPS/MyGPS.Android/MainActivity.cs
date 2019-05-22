@@ -4,7 +4,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using MyGPS.Messages;
+using MyGPSLogic.Messages;
 using Xamarin.Forms;
 
 namespace MyGPS.Droid

@@ -3,6 +3,9 @@ using MyGPSLogic.DataTransferObjects;
 
 namespace MyGPSLogic.Services
 {
+    /// <summary>
+    /// Clase que simula el proxy con el API REST
+    /// </summary>
     public class FakeServiceDriver : IDriver
     {
         public LatencyResponse GetLatency()
@@ -10,11 +13,12 @@ namespace MyGPSLogic.Services
             var response = new LatencyResponse();
             try
             {
-                // Llamada al API REST
+                //TODO: Llamada al API REST
                 response.NumberOfSeconds = 60;
             }
             catch (Exception ex)
             {
+                // En caso falle, el parametro Success es false
                 response.Success = false;
                 response.ErrorMessage = ex.Message;
             }
@@ -28,11 +32,12 @@ namespace MyGPSLogic.Services
             var response = new SentPositionsResponse();
             try
             {
-                // Hacer la llamada al API REST.
+                //TODO: Hacer la llamada al API REST.
                 response.Success = true;
             }
             catch (Exception ex)
             {
+                // En caso falle, el parametro Success es false
                 response.Success = false;
                 response.ErrorMessage = ex.Message;
             }

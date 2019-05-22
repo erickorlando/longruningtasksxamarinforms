@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using MyGPSLogic.DataTransferObjects;
 using MyGPSLogic.Messages;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -19,42 +20,13 @@ namespace MyGPS
 
         void HandleReceivedMessages()
         {
-            MessagingCenter.Subscribe<TickedMessage>(this, nameof(TickedMessage), message =>
+            MessagingCenter.Subscribe<LocationResponse>(this, nameof(LocationResponse), message =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    LblPosicion.Text = message.Message;
+                    LblPosicion.Text = message.ToString();
                 });
             });
-        }
-
-        private void BtnIniciar_OnClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                var message = new StartLongRunningTaskMessage();
-                MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Handle not supported on device exception
-                LblPosicion.Text = ex.Message;
-            }
-            catch (FeatureNotEnabledException ex)
-            {
-                // Handle not enabled on device exception
-                LblPosicion.Text = ex.Message;
-            }
-            catch (PermissionException ex)
-            {
-                // Handle permission exception
-                LblPosicion.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-                LblPosicion.Text = ex.Message;
-            }
         }
 
         private void BtnDetener_OnClicked(object sender, EventArgs e)

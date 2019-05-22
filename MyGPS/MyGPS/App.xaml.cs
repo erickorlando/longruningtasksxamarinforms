@@ -1,4 +1,5 @@
 ﻿using System;
+using MyGPSLogic.Messages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +16,9 @@ namespace MyGPS
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // Ni bien se ejecute la aplicacion, se debe invocar el inicio del Servicio.
+            var message = new StartLongRunningTaskMessage();
+            MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
         }
 
         protected override void OnSleep()
