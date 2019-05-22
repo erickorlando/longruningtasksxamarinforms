@@ -1,8 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using MyGPSLogic.DataTransferObjects;
+﻿using MyGPSLogic.DataTransferObjects;
 using MyGPSLogic.Messages;
-using Xamarin.Essentials;
+using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace MyGPS
@@ -15,12 +14,23 @@ namespace MyGPS
         public MainPage()
         {
             InitializeComponent();
+            // Ni bien se abra el ContentPage se nos suscribimos a los mensajes.
             HandleReceivedMessages();
         }
 
         void HandleReceivedMessages()
         {
+            // Respuesta de LocationResponse.
             MessagingCenter.Subscribe<LocationResponse>(this, nameof(LocationResponse), message =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LblPosicion.Text = message.ToString();
+                });
+            });
+
+            // Respuesta de CancelledMessage.
+            MessagingCenter.Subscribe<CancelledMessage>(this, nameof(CancelledMessage), message =>
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -31,6 +41,9 @@ namespace MyGPS
 
         private void BtnDetener_OnClicked(object sender, EventArgs e)
         {
+            //TODO: Debido a que el servicio se inicia ni bien inicia la aplicacion
+            //se realiza esta llamada, sin embargo, lo ideal es usar una instancia
+            //de la clase ServiceMyGps y llamar al metodo Shutdown para detenerlo.
             var message = new StopLongRunningTaskMessage();
             MessagingCenter.Send(message, nameof(StopLongRunningTaskMessage));
         }

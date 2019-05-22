@@ -15,6 +15,7 @@ namespace MyGPSLogic.Services
             {
                 //TODO: Llamada al API REST
                 response.NumberOfSeconds = 60;
+                response.Success = true;
             }
             catch (Exception ex)
             {

@@ -29,9 +29,6 @@ namespace MyGPSLogic.Services
             {
                 Token = cancellationToken;
 
-                var message = new StartLongRunningTaskMessage();
-                MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
-
                 // Obtenemos la latencia.
                 var latency = _driver.GetLatency();
                 if (!latency.Success)
@@ -60,8 +57,8 @@ namespace MyGPSLogic.Services
             var response = new GpsServiceResponse();
             try
             {
-                var message = new StartLongRunningTaskMessage();
-                MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
+                var message = new StopLongRunningTaskMessage();
+                MessagingCenter.Send(message, nameof(StopLongRunningTaskMessage));
                 response.Success = true;
             }
             catch (Exception ex)
@@ -81,12 +78,12 @@ namespace MyGPSLogic.Services
         private void ElapsedTime(object state)
         {
             // Hacemos cast del objeto recibido.
-            var stateRequest = (GpsPositionRequest)state;
+            var stateRequest = (ServiceMyGps)state;
 
             Task.Run(async () =>
             {
                 stateRequest
-                    .CancellationToken
+                    .Token
                     .ThrowIfCancellationRequested();
 
                 var response = new LocationResponse();
@@ -108,7 +105,7 @@ namespace MyGPSLogic.Services
                     }
 
                     var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                    var position = await Geolocation.GetLocationAsync(request, stateRequest.CancellationToken);
+                    var position = await Geolocation.GetLocationAsync(request, stateRequest.Token);
 
                     if (position == null)
                     {
@@ -158,7 +155,7 @@ namespace MyGPSLogic.Services
                 // Almacenamos de manera local en memoria el valor de LocationResponse
                 _locationResponse = response;
 
-            }, stateRequest.CancellationToken);
+            }, stateRequest.Token);
         }
 
     }

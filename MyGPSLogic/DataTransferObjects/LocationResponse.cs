@@ -2,6 +2,7 @@
 
 namespace MyGPSLogic.DataTransferObjects
 {
+    // Clase que permite obtener los datos recogidos por el GPS.
     public class LocationResponse : BaseResponse
     {
         public double Latitude { get; set; }
