@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using MyGPSLogic.Messages;
+using Plugin.LocalNotifications;
 using Xamarin.Forms;
 
 namespace MyGPS.Droid
@@ -12,6 +13,8 @@ namespace MyGPS.Droid
 	[Activity(Label = "MyGPS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        private const string CHANNEL_ID = "MyGpsChannel";
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -23,6 +26,7 @@ namespace MyGPS.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             WireUpLongRunningTask();
+            LocalNotificationsImplementation.NotificationIconId = Resource.Mipmap.icon;
         }
 
         void WireUpLongRunningTask()
@@ -44,5 +48,6 @@ namespace MyGPS.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

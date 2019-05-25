@@ -104,9 +104,11 @@ namespace MyGPSLogic.Services
                         return; // Se sale del metodo.
                     }
 
+                    // Hacemos un request al dispositivo para obtener la posicion GPS
                     var request = new GeolocationRequest(GeolocationAccuracy.Medium);
                     var position = await Geolocation.GetLocationAsync(request, stateRequest.Token);
 
+                    // En caso no se pueda
                     if (position == null)
                     {
                         response.Success = false;
@@ -114,12 +116,14 @@ namespace MyGPSLogic.Services
                     }
                     else
                     {
+                        // Obtenemos todos los valores necesarios.
                         response.Altitude = position.Altitude;
                         response.Latitude = position.Latitude;
                         response.Longitude = position.Longitude;
                         response.Speed = position.Speed;
                         response.DateTime = DateTime.Now;
 
+                        // Una vez obtenida la posicion GPS enviamos las posiciones al objeto Driver.
                         var sendPositionResponse = _driver.SendGpsPositions(response);
 
                         response.Success = sendPositionResponse.Success;
@@ -149,6 +153,8 @@ namespace MyGPSLogic.Services
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    // Terminado el proceso de lectura de GPS enviamos los datos capturados como mensaje
+                    // Para que se muestre como dato de cadena.
                     MessagingCenter.Send(response, nameof(LocationResponse));
                 });
 

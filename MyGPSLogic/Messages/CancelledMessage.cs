@@ -6,10 +6,10 @@ namespace MyGPSLogic.Messages
     public class CancelledMessage
     {
         public DateTime DateTime { get; set; }
-
+        public string MensajeAdicional { get; set; }
         public override string ToString()
         {
-            return $"Servicio detenido a las {DateTime:G}";
+            return $"Servicio detenido a las {DateTime:G} {MensajeAdicional}";
         }
     }
 }

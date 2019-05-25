@@ -1,5 +1,6 @@
 ﻿using System;
 using MyGPSLogic.Messages;
+using MyGPSLogic.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,6 +8,10 @@ namespace MyGPS
 {
     public partial class App : Application
     {
+        private static IMyGps _servicioGps;
+        public static IMyGps ServicioGps => _servicioGps 
+                                            ?? (_servicioGps = new ServiceMyGps(new FakeServiceDriver()));
+
         public App()
         {
             InitializeComponent();
@@ -16,9 +21,7 @@ namespace MyGPS
 
         protected override void OnStart()
         {
-            // Ni bien se ejecute la aplicacion, se debe invocar el inicio del Servicio.
-            var message = new StartLongRunningTaskMessage();
-            MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
+            
         }
 
         protected override void OnSleep()

@@ -28,12 +28,16 @@ namespace MyGPS.Droid
             {
                 try
                 {
-                    IMyGps myGpsService = new ServiceMyGps(new FakeServiceDriver());
-                    var response = myGpsService.StartUp(_cts.Token);
-                    if (!response.Success)
+                    var response = App.ServicioGps.StartUp(_cts.Token);
+                    if (response.Success) return;
+
+                    var message = new CancelledMessage
                     {
-                        Console.WriteLine(response.ErrorMessage);
-                    }
+                        MensajeAdicional = response.ErrorMessage
+                    };
+                    Device.BeginInvokeOnMainThread(
+                        () => MessagingCenter.Send(message, nameof(CancelledMessage))
+                    );
                 }
                 catch (Android.OS.OperationCanceledException ex)
                 {

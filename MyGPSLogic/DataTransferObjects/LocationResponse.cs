@@ -11,6 +11,11 @@ namespace MyGPSLogic.DataTransferObjects
         public double? Speed { get; set; }
         public DateTime DateTime { get; set; }
 
+        public LocationResponse()
+        {
+            DateTime = DateTime.Now;
+        }
+
         public override string ToString()
         {
             return

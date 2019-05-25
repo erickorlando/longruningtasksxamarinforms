@@ -3,6 +3,7 @@ using MyGPSLogic.Messages;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Plugin.LocalNotifications;
 
 namespace MyGPS
 {
@@ -39,11 +40,22 @@ namespace MyGPS
             });
         }
 
+
+        private void BtnIniciar_OnClicked(object sender, EventArgs e)
+        {
+            // Enviamos un mensaje con la intencion de invocar el inicio del Servicio.
+            var message = new StartLongRunningTaskMessage();
+            MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
+        }
+
+        private void BtnNotificacion_OnClicked(object sender, EventArgs e)
+        {
+            CrossLocalNotifications.Current.Show("MyGPS", "La aplicacion se encuentra en ejecucion");
+        }
+
         private void BtnDetener_OnClicked(object sender, EventArgs e)
         {
-            //TODO: Debido a que el servicio se inicia ni bien inicia la aplicacion
-            //se realiza esta llamada, sin embargo, lo ideal es usar una instancia
-            //de la clase ServiceMyGps y llamar al metodo Shutdown para detenerlo.
+            // Enviamos un mensaje con la intencion de dar fin al servicio.
             var message = new StopLongRunningTaskMessage();
             MessagingCenter.Send(message, nameof(StopLongRunningTaskMessage));
         }
