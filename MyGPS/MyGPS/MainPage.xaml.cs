@@ -27,6 +27,7 @@ namespace MyGPS
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     LblPosicion.Text = message.ToString();
+                    CrossLocalNotifications.Current.Show("MyGPS", message.ToString());
                 });
             });
 
@@ -46,11 +47,6 @@ namespace MyGPS
             // Enviamos un mensaje con la intencion de invocar el inicio del Servicio.
             var message = new StartLongRunningTaskMessage();
             MessagingCenter.Send(message, nameof(StartLongRunningTaskMessage));
-        }
-
-        private void BtnNotificacion_OnClicked(object sender, EventArgs e)
-        {
-            CrossLocalNotifications.Current.Show("MyGPS", "La aplicacion se encuentra en ejecucion");
         }
 
         private void BtnDetener_OnClicked(object sender, EventArgs e)

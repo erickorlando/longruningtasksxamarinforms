@@ -26,7 +26,7 @@ namespace MyGPS.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             WireUpLongRunningTask();
-            LocalNotificationsImplementation.NotificationIconId = Resource.Mipmap.icon;
+            LocalNotificationsImplementation.NotificationIconId = Resource.Mipmap.launcher_foreground;
         }
 
         void WireUpLongRunningTask()

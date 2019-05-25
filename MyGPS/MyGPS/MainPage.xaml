@@ -8,7 +8,6 @@
         <Label Text="Posición"></Label>
         <Label x:Name="LblPosicion"></Label>
         <Button x:Name="BtnIniciar" Text="Iniciar Servicio" Clicked="BtnIniciar_OnClicked" />
-        <Button x:Name="BtnNotificacion" Text="Lanzar Notificacion" Clicked="BtnNotificacion_OnClicked" />
         <Button x:Name="BtnDetener"  Text="Detener Servicio" Clicked="BtnDetener_OnClicked" />
     </StackLayout>
 
