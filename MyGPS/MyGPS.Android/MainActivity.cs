@@ -13,7 +13,6 @@ namespace MyGPS.Droid
 	[Activity(Label = "MyGPS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        private const string CHANNEL_ID = "MyGpsChannel";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

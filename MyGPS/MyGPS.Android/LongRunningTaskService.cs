@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.OS;
 using MyGPSLogic.Messages;
-using MyGPSLogic.Services;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

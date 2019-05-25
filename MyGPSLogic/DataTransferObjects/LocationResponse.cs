@@ -19,7 +19,7 @@ namespace MyGPSLogic.DataTransferObjects
         public override string ToString()
         {
             return
-                $"Latitud: {Latitude}, Longitud: {Longitude}, Altitud: {Altitude}, Velocidad: {Speed}, Hora: {DateTime:G}";
+                $"Latitud: {Latitude:N2}, Longitud: {Longitude:N2}, \nAltitud: {Altitude:N2}, Velocidad: km/h{Speed:N2}, Hora: {DateTime:G}";
         }
     }
 }
