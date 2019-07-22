@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -18,11 +18,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MyGPSLogic\MyGPSLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Xamarin.Android.Support.Compat">
-      <HintPath>..\..\..\..\ProgramData\Xamarin\NuGet\xamarin.android.support.compat\28.0.0.1\lib\monoandroid81\Xamarin.Android.Support.Compat.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>
